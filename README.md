@@ -29,7 +29,7 @@ $ uniconvert /path/to/file.txt
 In Ruby
 
 ```ruby
-text = Uniconvert.to_html('Maître Corbeau, sur un arbre perché')
+text = Uniconvert.to(:HTML, 'Maître Corbeau, sur un arbre perché')
 
 some_field.text(text)
 ```
