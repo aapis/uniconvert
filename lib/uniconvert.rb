@@ -8,9 +8,7 @@ module Uniconvert
   #                      like to convert
   # @create_file Bool    Flag to create a new file with the converted data
   #
-  def self.to(converter, file, create_file = nil)
-    create_file ||= true
-
+  def self.to(converter, file, create_file = false)
     converter_obj = Uniconvert.const_get(converter).new(create_file)
     converter_obj.convert(file)
   end

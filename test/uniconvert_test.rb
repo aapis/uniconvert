@@ -6,6 +6,6 @@ class UniconvertTest < Minitest::Test
   end
 
   def test_it_does_something_useful
-    refute Uniconvert.to_html('test/fixtures/sample.txt', false)
+    refute Uniconvert.to(:HTML, 'test/fixtures/sample.txt', false)
   end
 end
