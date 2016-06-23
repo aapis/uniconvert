@@ -3,8 +3,15 @@
 require 'rubygems'
 require 'htmlentities'
 require 'unicode'
+require 'notifaction'
+require 'iconv'
+
+Dir['lib/uniconvert/converters/*'].each do |f|
+    require_relative "../#{f}"
+end
 
 require_relative "../lib/uniconvert.rb"
 
 # convert the file to HTML-safe characters
-Uniconvert.to_html(ARGV[0])
+# Uniconvert.to(:HTML, ARGV[0])
+Uniconvert.to(:ASCII, ARGV[0])
