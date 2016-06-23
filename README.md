@@ -1,6 +1,6 @@
 # Uniconvert
 
-Various conversions for non-Latin characters.  So far the only method is `to_html`, to convert things like "Â" to "&Acirc;", but more will be added as required.
+Various conversions for non-Latin characters.  So far the only method is `to_html`, to convert things like "Â" to "& Acirc;" (but without the space), but more will be added as required.
 
 ## Installation
 
@@ -20,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Using the binary:
+
+```shell
+$ uniconvert /path/to/file.txt
+```
+
+In Ruby
+
+```ruby
+text = Uniconvert.to_html('Maître Corbeau, sur un arbre perché')
+
+some_field.text(text)
+```
 
 ## Development
 
