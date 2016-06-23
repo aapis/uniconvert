@@ -7,7 +7,7 @@ module Uniconvert
       @encoder = HTMLEntities.new
     end
 
-    def convert(file)
+    def convert_file(file)
       file_contents = File.read(file)
       converted = @encoder.encode(file_contents, :named)
 
@@ -22,6 +22,10 @@ module Uniconvert
       end
 
       converted.nil?
+    end
+
+    def convert_str(str)
+      @encoder.encode(str, :named)
     end
 
   end

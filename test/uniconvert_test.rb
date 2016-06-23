@@ -5,7 +5,11 @@ class UniconvertTest < Minitest::Test
     refute_nil ::Uniconvert::VERSION
   end
 
-  def test_it_does_something_useful
-    refute Uniconvert.to(:HTML, 'test/fixtures/sample.txt', false)
+  def test_file_converter
+    refute Uniconvert.file_to(:HTML, 'test/fixtures/sample.txt', false)
+  end
+
+  def test_string_converter
+    assert Uniconvert.str_to(:HTML, 'Maître Corbeau, sur un arbre perché,', false).is_a? String
   end
 end

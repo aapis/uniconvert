@@ -5,6 +5,7 @@ require 'htmlentities'
 require 'unicode'
 require 'notifaction'
 require 'iconv'
+require 'pathname'
 
 Dir['lib/uniconvert/converters/*'].each do |f|
     require_relative "../#{f}"
@@ -12,6 +13,15 @@ end
 
 require_relative "../lib/uniconvert.rb"
 
-# convert the file to HTML-safe characters
-# Uniconvert.to(:HTML, ARGV[0])
-Uniconvert.to(:ASCII, ARGV[0])
+# convert input to HTML-safe characters
+str = Pathname.new(ARGV[0])
+
+if str.readable?
+  Uniconvert.file_to(:HTML, str)
+else
+  Notify.spacer
+  Notify.success("Translated text below")
+  Notify.spacer
+  Notify.spit(Uniconvert.str_to(:HTML, str))
+  Notify.spacer
+end
