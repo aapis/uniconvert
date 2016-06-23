@@ -16,12 +16,17 @@ require_relative "../lib/uniconvert.rb"
 # convert input to HTML-safe characters
 str = Pathname.new(ARGV[0])
 
-if str.readable?
-  Uniconvert.file_to(:HTML, str)
-else
-  Notify.spacer
-  Notify.success("Translated text below")
-  Notify.spacer
-  Notify.spit(Uniconvert.str_to(:HTML, str))
-  Notify.spacer
+begin
+  if str.readable?
+    Uniconvert.file_to(:HTML, str)
+  else
+    Notify.spacer
+    Notify.success("Translated text below")
+    Notify.spacer
+    Notify.spit(Uniconvert.str_to(:HTML, str))
+    Notify.spacer
+  end
+rescue Errno::EISDIR
+  Notify.error("Cannot translate directories (files only, please!)", {})
 end
+
