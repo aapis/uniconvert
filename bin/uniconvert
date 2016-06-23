@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'htmlentities'
+require 'unicode'
+
+require_relative "../lib/uniconvert.rb"
+
+# convert the file to HTML-safe characters
+Uniconvert.to_html(ARGV[0])
