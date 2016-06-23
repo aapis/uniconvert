@@ -1,6 +1,6 @@
 # Uniconvert
 
-Various conversions for non-Latin characters.  So far the only method is `to_html`, to convert things like "Â" to "& Acirc;" (but without the space), but more will be added as required.
+Various conversions for non-Latin characters.  So far the only method is `to`, to convert things like "Â" to "& Acirc;" (but without the space), but more will be added as required.
 
 ## Installation
 
