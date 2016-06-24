@@ -5,10 +5,10 @@ require 'htmlentities'
 require 'unicode'
 require 'uniconvert/version'
 
-Dir['lib/uniconvert/converters/*'].each do |f|
-    require_relative "../#{f}"
-end
+require_relative "../lib/uniconvert/setup.rb"
+require_relative "../lib/uniconvert.rb"
 
-require 'uniconvert'
+setup = Uniconvert::Setup.new
+setup.load_converters
 
 require 'minitest/autorun'

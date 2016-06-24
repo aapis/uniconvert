@@ -8,20 +8,24 @@ module Uniconvert
     end
 
     def convert_file(file)
-      file_contents = File.read(file)
-      converted = @encoder.encode(file_contents, :named)
+      begin
+        file_contents = File.read(file)
+        converted = @encoder.encode(file_contents, :named)
 
-      if @create_file
-        translated_file_name = file + '.converted'
+        if @create_file
+          translated_file_name = file + '.converted'
 
-        File.open(translated_file_name, 'w+') do |f|
-          f.write converted
+          File.open(translated_file_name, 'w+') do |f|
+            f.write converted
+          end
+
+          `$EDITOR #{translated_file_name}`
         end
 
-        `$EDITOR #{translated_file_name}`
+        converted.nil?
+      rescue Errno::EISDIR
+        false
       end
-
-      converted.nil?
     end
 
     def convert_str(str)
