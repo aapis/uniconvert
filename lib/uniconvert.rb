@@ -27,7 +27,7 @@ module Uniconvert
 
     # copy to clipboard?
     # if system('type pbcopy')
-    #   `echo "#{converted_str}"  | pbcopy`
+    #   `echo "#{converted_str}" > /dev/null 2>&1 | pbcopy`
     # end
   end
 
